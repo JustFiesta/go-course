@@ -23,7 +23,7 @@ type Config struct {
 // Load reads configuration from environment variables with sensible defaults.
 func Load() *Config {
 	cfg := &Config{
-		AWSRegion:              getEnv("AWS_REGION", "us-east-1"),
+		AWSRegion:              getEnv("AWS_REGION", "eu-west-1"),
 		DynamoTableName:        getEnv("DYNAMO_TABLE_NAME", "iac-data-store"),
 		LambdaFuncName:         getEnv("LAMBDA_FUNC_NAME", "iac-data-fetcher"),
 		LambdaRoleName:         getEnv("LAMBDA_ROLE_NAME", "iac-lambda-role"),

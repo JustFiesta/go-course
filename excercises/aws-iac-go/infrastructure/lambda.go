@@ -29,12 +29,12 @@ func SetupLambda(ctx context.Context, awsCfg aws.Config, cfg *config.Config, rol
 	}
 	log.Printf("[lambda] ZIP ready, size: %d bytes", len(zipBytes))
 
-	// 2. Environment variables injected into the Lambda function
+	// 2. Environment variables injected into the Lambda function.
+	// Note: AWS_REGION is reserved by Lambda and must not be set manually.
 	envVars := map[string]string{
 		"DYNAMODB_TABLE_NAME": cfg.DynamoTableName,
 		"EXTERNAL_API_URL":    cfg.ExternalAPIURL,
 		"MAX_RETRIES":         fmt.Sprintf("%d", cfg.MaxRetries),
-		"AWS_REGION":          cfg.AWSRegion,
 	}
 
 	// 3. Check whether the function already exists
